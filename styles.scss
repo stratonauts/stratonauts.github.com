@@ -1,0 +1,103 @@
+$padding: 30px;
+
+body {
+  background-color: #222222;
+  padding: 0;
+  margin: 0;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.1;
+  background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px);
+  background-size: 16px 16px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.625rem;
+  font-family: 'Jacquard 24', system-ui;
+  font-weight: 400;
+  font-style: normal;
+
+  @media (min-width: 450px) {
+    font-size: 6rem;
+  }
+}
+
+.glitch {
+  color: white;
+  position: relative;
+  padding: $padding;
+
+  &::before,
+  &::after {
+    padding: $padding;
+    color: white;
+    content: 'stratonauts';
+    position: absolute;
+    background: #222222;
+    overflow: hidden;
+    top: 0;
+  }
+  
+  &::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation-name: glitch-animation-1;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse-alternate;
+
+    @media (min-width: 450px) {
+      left: 3px;
+    }
+  }
+  
+  &::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    animation-name: glitch-animation-2;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse-alternate;
+
+    @media (min-width: 450px) {
+      left: -3px;
+    }
+  }
+}
+
+$width: 420px;
+$half_width: calc($width / 2);
+
+@keyframes glitch-animation-1 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*calc(1/$steps))} {
+      clip-path: rect(random($half_width)+px $width random($half_width)+px 0);
+    }
+  }
+}
+
+@keyframes glitch-animation-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*calc(1/$steps))} {
+      clip-path: rect(random($half_width)+px $width random($half_width)+px 0);
+    }
+  }
+};

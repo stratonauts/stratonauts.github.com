@@ -1,5 +1,10 @@
 {
+  "scripts": {
+    "sass:watch": "sass --source-map -w styles.scss styles.css",
+    "sass:build": "sass --style=compressed styles.scss styles.css"
+  },
   "devDependencies": {
-    "prettier-config-standard": "^7.0.0"
+    "prettier-config-standard": "^7.0.0",
+    "sass": "^1.77.6"
   }
 }
